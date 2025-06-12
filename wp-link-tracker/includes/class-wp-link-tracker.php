@@ -35,6 +35,11 @@ class WP_Link_Tracker {
         
         // Add AJAX handlers
         add_action('wp_ajax_wp_link_tracker_get_stats', array($this->stats, 'get_stats_ajax'));
+        add_action('wp_ajax_wp_link_tracker_get_top_links', array($this->stats, 'get_top_links_ajax'));
+        add_action('wp_ajax_wp_link_tracker_get_top_referrers', array($this->stats, 'get_top_referrers_ajax'));
+        add_action('wp_ajax_wp_link_tracker_get_dashboard_summary', array($this->stats, 'get_dashboard_summary_ajax'));
+        add_action('wp_ajax_wp_link_tracker_get_clicks_over_time', array($this->stats, 'get_clicks_over_time_ajax'));
+        add_action('wp_ajax_wp_link_tracker_get_device_data', array($this->stats, 'get_device_data_ajax'));
         add_action('wp_ajax_wp_link_tracker_create_link', array($this->admin, 'create_link_ajax'));
     }
 }

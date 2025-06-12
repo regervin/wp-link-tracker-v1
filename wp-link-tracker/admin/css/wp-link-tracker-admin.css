@@ -2,221 +2,171 @@
  * Admin styles for WP Link Tracker
  */
 
-/* Meta box styles */
-.wplinktracker-stats-summary {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.wplinktracker-stat-box {
-    flex: 1;
-    margin-right: 15px;
-    padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.wplinktracker-stat-box:last-child {
-    margin-right: 0;
-}
-
-.wplinktracker-stat-value {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0073aa;
-}
-
-.wplinktracker-charts, 
-.wplinktracker-tables {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.wplinktracker-chart, 
-.wplinktracker-table {
-    flex: 1;
-    margin-right: 15px;
-    padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.wplinktracker-chart:last-child, 
-.wplinktracker-table:last-child {
-    margin-right: 0;
-}
-
 /* Dashboard styles */
 .wplinktracker-dashboard {
     margin-top: 20px;
 }
 
-.wplinktracker-dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.wplinktracker-dashboard-summary {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.wplinktracker-summary-box {
-    flex: 1;
-    margin-right: 15px;
-    padding: 20px;
+.wplinktracker-date-range {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.wplinktracker-date-range-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.wplinktracker-date-range label {
+    margin-right: 5px;
+}
+
+#wplinktracker-custom-date-range {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.wplinktracker-datepicker {
+    width: 120px;
+}
+
+.wplinktracker-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wplinktracker-summary-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
-.wplinktracker-summary-box:last-child {
-    margin-right: 0;
-}
-
-.wplinktracker-summary-box h3 {
+.wplinktracker-summary-card h3 {
     margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
     color: #23282d;
 }
 
 .wplinktracker-summary-value {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     color: #0073aa;
 }
 
-.wplinktracker-dashboard-charts,
-.wplinktracker-dashboard-tables,
-.wplinktracker-dashboard-devices {
-    display: flex;
+.wplinktracker-summary-card.updated {
+    background-color: #f7fcfe;
+    border-color: #0073aa;
+    box-shadow: 0 0 5px rgba(0, 115, 170, 0.3);
+}
+
+/* Chart styles */
+.wplinktracker-chart-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
     margin-bottom: 30px;
 }
 
-.wplinktracker-chart-container,
-.wplinktracker-table-container {
-    flex: 1;
-    margin-right: 15px;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-/* Set fixed height for clicks chart container and add scrolling if needed */
-.wplinktracker-chart-container canvas#wplinktracker-clicks-chart {
-    max-height: 300px;
-}
-
-/* Set fixed height for device charts and add scrolling if needed */
-.wplinktracker-dashboard-devices .wplinktracker-chart-container {
-    height: 350px;
-    overflow: hidden;
-}
-
-.wplinktracker-dashboard-devices .wplinktracker-chart-container canvas {
-    max-height: 300px;
-}
-
-/* Set fixed height for table containers and add scrolling */
-.wplinktracker-table-container > div {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.wplinktracker-chart-container:last-child,
-.wplinktracker-table-container:last-child {
-    margin-right: 0;
-}
-
-.wplinktracker-chart-container h3,
-.wplinktracker-table-container h3 {
+.wplinktracker-chart-container h2 {
     margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
     color: #23282d;
 }
 
-#wplinktracker-custom-date-range {
-    margin-top: 10px;
+.wplinktracker-chart-wrapper {
+    position: relative;
+    height: 300px;
+    width: 100%;
 }
 
-/* Responsive styles */
-@media (max-width: 782px) {
-    .wplinktracker-stats-summary,
-    .wplinktracker-charts,
-    .wplinktracker-tables,
-    .wplinktracker-dashboard-summary,
-    .wplinktracker-dashboard-charts,
-    .wplinktracker-dashboard-tables,
-    .wplinktracker-dashboard-devices {
-        flex-direction: column;
-    }
-    
-    .wplinktracker-stat-box,
-    .wplinktracker-chart,
-    .wplinktracker-table,
-    .wplinktracker-summary-box,
-    .wplinktracker-chart-container,
-    .wplinktracker-table-container {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
+/* Device charts grid */
+.wplinktracker-device-charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* Quick create form */
-.wplinktracker-quick-create {
+.wplinktracker-device-chart {
+    text-align: center;
+}
+
+.wplinktracker-device-chart h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #23282d;
+}
+
+.wplinktracker-device-chart .wplinktracker-chart-wrapper {
+    height: 250px;
+}
+
+/* Data grid for Top Links and Referrers */
+.wplinktracker-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wplinktracker-data-container {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.wplinktracker-quick-create h3 {
+.wplinktracker-data-container h2 {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #23282d;
 }
 
-.wplinktracker-form-row {
-    margin-bottom: 15px;
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+    .wplinktracker-device-charts {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
-.wplinktracker-form-row label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.wplinktracker-form-row input[type="text"],
-.wplinktracker-form-row input[type="url"],
-.wplinktracker-form-row select {
-    width: 100%;
-}
-
-.wplinktracker-form-actions {
-    margin-top: 20px;
-}
-
-/* Link list enhancements */
-.column-short_url {
-    width: 25%;
-}
-
-.column-clicks,
-.column-unique_visitors,
-.column-conversion_rate {
-    width: 10%;
-    text-align: center;
-}
-
-.copy-to-clipboard {
-    margin-top: 5px !important;
+@media screen and (max-width: 782px) {
+    .wplinktracker-date-range-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .wplinktracker-date-range-controls > * {
+        margin-bottom: 10px;
+    }
+    
+    .wplinktracker-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .wplinktracker-chart-wrapper {
+        height: 250px;
+    }
+    
+    .wplinktracker-data-grid {
+        grid-template-columns: 1fr;
+    }
 }

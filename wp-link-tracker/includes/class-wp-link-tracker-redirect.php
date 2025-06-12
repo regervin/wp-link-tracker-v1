@@ -106,7 +106,10 @@ class WP_Link_Tracker_Redirect {
         // Insert click data into the database
         $table_name = $wpdb->prefix . 'wplinktracker_clicks';
         
-        $wpdb->insert(
+        // Log the click data for debugging
+        error_log("Tracking click - Post ID: $post_id, Visitor ID: $visitor_id, IP: $ip_address, Device: $device_type, Browser: $browser, OS: $os");
+        
+        $result = $wpdb->insert(
             $table_name,
             array(
                 'post_id' => $post_id,
@@ -126,17 +129,28 @@ class WP_Link_Tracker_Redirect {
             )
         );
         
-        // Update click counts
+        // Log the result of the insert operation
+        if ($result === false) {
+            error_log("Error inserting click data: " . $wpdb->last_error);
+        } else {
+            error_log("Successfully inserted click data with ID: " . $wpdb->insert_id);
+        }
+        
+        // Update click counts in post meta
         $total_clicks = (int) get_post_meta($post_id, '_wplinktracker_total_clicks', true);
         update_post_meta($post_id, '_wplinktracker_total_clicks', $total_clicks + 1);
         
         // Count unique visitors
-        $unique_visitors = $wpdb->get_var($wpdb->prepare(
+        $unique_visitors_query = $wpdb->prepare(
             "SELECT COUNT(DISTINCT visitor_id) FROM $table_name WHERE post_id = %d",
             $post_id
-        ));
+        );
+        $unique_visitors = $wpdb->get_var($unique_visitors_query);
         
         update_post_meta($post_id, '_wplinktracker_unique_visitors', $unique_visitors);
+        
+        // Log the updated meta values
+        error_log("Updated meta - Total Clicks: " . ($total_clicks + 1) . ", Unique Visitors: $unique_visitors");
     }
 
     /**
